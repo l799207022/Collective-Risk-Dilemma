@@ -2,7 +2,7 @@
 import numpy as np 
 import pandas as pd 
 
-# PsyPoint = 1.2
+PsyPoint = 1.2
 BETA = 1.2
 class Agent():
    
@@ -21,6 +21,7 @@ class Agent():
         self.learn = learn
         self.proportion1 = prop1
         self.proportion2 = prop2
+        print (self.name)
         print ("prop1",self.proportion1)
         print ("prop1",self.proportion2)
         self.feedbackTable=[]
@@ -81,24 +82,24 @@ class Agent():
     #commonPool,R,r
 
     ##This function was the first design for the environment feedback  
-    def envFeedback (self, commonPool,currentPlayer, state = 0, choice = 0):
-        point = 0
-        round = self.rNum
-        expectTarget = state * self.numPlayer + currentPlayer + 1
-        currentRoound = state + 1 
-        if (currentRoound != round) & (commonPool < self.target): 
-            if commonPool < expectTarget:
-                point = 0
-            else :
-                # print ("t0001:",(commonPool /(self.numPlayer*currentRoound)))
-                point = 2 + (commonPool-expectTarget)*PsyPoint - choice
-                # print ("winpoint",point)
-        elif (currentRoound != round) & (commonPool >= self.target):
-            point = 5
-        #print ("sate" , state)
-        #print ("Point", point)
+    # def envFeedback (self, commonPool,currentPlayer, state = 0, choice = 0):
+    #     point = 0
+    #     round = self.rNum
+    #     expectTarget = state * self.numPlayer + currentPlayer + 1
+    #     currentRoound = state + 1 
+    #     if (currentRoound != round) & (commonPool < self.target): 
+    #         if commonPool < expectTarget:
+    #             point = 0
+    #         else :
+    #             # print ("t0001:",(commonPool /(self.numPlayer*currentRoound)))
+    #             point = 2 + (commonPool-expectTarget)*PsyPoint - choice
+    #             # print ("winpoint",point)
+    #     elif (currentRoound != round) & (commonPool >= self.target):
+    #         point = 5
+    #     #print ("sate" , state)
+    #     #print ("Point", point)
         
-        self.feedbackTable[choice][state].append(point)
+    #     self.feedbackTable[choice][state].append(point)
         
 
     ## This is the feedback function which is used in this project.
@@ -114,11 +115,11 @@ class Agent():
             point = 0
         # print ("sate" , state)
         # print ("Point", point)
-        if self.name=="2":
-            print ("2 prop1",self.proportion1)
-            print ("2 prop2",self.proportion2)
+        # if self.name=="2":
+        #     print ("2 prop1",self.proportion1)
+        #     print ("2 prop2",self.proportion2)
 
-            print ("point",point )
+        #     print ("point",point )
         self.feedbackTable[choice][state].append(point)
 
 
@@ -154,7 +155,7 @@ class Agent():
             else:
                 print("passed,with all zero")
             
-        print("the tprorable",self.tproprtion)
+        print("The probability table of ",self.name ," is ",self.tproprtion)
 
 ## The function to build the look-up table 
     def buildQtable (self):

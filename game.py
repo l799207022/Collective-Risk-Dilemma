@@ -3,19 +3,19 @@ import numpy as np
 import pandas as pd
 import math
 
-PRISK = 0.9
+PRISK = 1.2
 BETA = 1.2  # Used in fitness (measures the intensity of selection)
 R = 10
 M = 10
 N = 100
 class Game():
-    def __init__(self, nPlayer =100, mPlayer = 10, learn=True,simulation= False, prisk=PRISK, sigma=SIGMA):
+    def __init__(self, nPlayer =100, mPlayer = 10, learn=True,simulation= False, prisk=PRISK):
         self.N = nPlayer
         self.M = mPlayer
         self.R = R
         self.learn=learn
         self.simulation = simulation
-        self.prisk = 0.9
+        self.prisk = prisk
         self.fitness = [0]*self.N
         self.payoffsList = [[] for i in range (self.N)]
         self.commonPool = 0 
