@@ -10,7 +10,7 @@ M = 10
 class Simulation:
     def __init__(self):
         self.playGame = game.Game(N,M)
-    
+    ## Train process simulation
     def trainTable(self):
         self.playGame.learnModel(True)
         self.playGame.simulationModel(False)
@@ -30,7 +30,7 @@ class Simulation:
                 #self.playGame.train (0.9)
                 self.playGame.newTrain(0.9)
         self.playGame.prepareForPlay()
-    
+    ## wright-fisher process simulation
     def evolutionaryDynamics1(self):
         self.playGame.learnModel(False)
         self.playGame.simulationModel(True)
